@@ -28,6 +28,7 @@ gptAPI = GPT(os.environ.get('APIKEY'))
 # Set the secret key to some random bytes. Keep this really secret!
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
 
+# entry page
 @app.route('/')
 def index():
     ''' display a link to the general query page '''
@@ -65,7 +66,12 @@ def gptdemo():
             <p><input type=submit value="get response">
         </form>
         '''
-    
+@app.route('/index')
+def display_index_page():
+    return '''
+    <h1>Link to each of the team-members pages</h1>
+    <a href="/trista"> trista</a>
+    '''
 
 
 if __name__=='__main__':
