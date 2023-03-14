@@ -72,6 +72,11 @@ def display_index_page():
     <h1>Link to each of the team-members pages</h1>
     <a href="/trista"> trista</a>
     '''
+@app.route('/trista')
+def displau_trista_page():
+    return '''
+    <h1> trista's page!</h1>
+    '''
 
 
 if __name__=='__main__':
