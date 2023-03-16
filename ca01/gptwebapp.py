@@ -31,39 +31,12 @@ app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
 app = Flask(__name__)
 
 
-# entry page
+# entry pages
 @app.route('/')
 def redirect_page():
     return render_template('index.html')
 
-
-@app.route('/gptdemo', methods=['GET', 'POST'])
-def gptdemo():
-    ''' handle a get request by sending a form 
-        and a post request by returning the GPT response
-    '''
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        answer = gptAPI.getResponse(prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('gptdemo')}> make another query</a>
-        '''
-    else:
-        return '''
-        <h1>GPT Demo App</h1>
-        Enter your query below
-        <form method="post">
-            <textarea name="prompt"></textarea>
-            <p><input type=submit value="get response">
-        </form>
-        '''
+# required pages of the assignment 
 @app.route('/index')
 def display_index_page():
     return render_template('index.html')
@@ -78,6 +51,8 @@ def display_about_page():
     root_dir = app.root_path
     return send_from_directory(root_dir + '/static/', "about.txt")
 
+
+# set up from each member
 @app.route('/trista', methods=['GET', 'POST'])
 def display_trista_page():
     
