@@ -18,8 +18,9 @@ On Windows:
 % $env:APIKEY="....." # in powershell
 % python gptwebapp.py
 '''
-from flask import request,redirect,url_for,Flask
+from flask import render_template,request,redirect,url_for,Flask
 from gpt import GPT
+from flask import Flask, send_from_directory
 import os
 
 app = Flask(__name__)
@@ -27,16 +28,13 @@ gptAPI = GPT(os.environ.get('APIKEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
+app = Flask(__name__)
+
 
 # entry page
 @app.route('/')
-def index():
-    ''' display a link to the general query page '''
-    print('processing / route')
-    return f'''
-        <h1>GPT Demo</h1>
-        <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
-    '''
+def redirect_page():
+    return render_template('index.html')
 
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
@@ -68,17 +66,27 @@ def gptdemo():
         '''
 @app.route('/index')
 def display_index_page():
-    return '''
-    <h1>Link to each of the team-members pages</h1>
-    <a href="/trista"> trista</a>
-    '''
-@app.route('/trista')
-def displau_trista_page():
-    return '''
-    <h1> trista's page!</h1>
-    '''
+    return render_template('index.html')
+
+@app.route('/team')
+def display_team_page():
+    return render_template('team.html')
+
+
+@app.route('/about')
+def display_about_page():
+    root_dir = app.root_path
+    return send_from_directory(root_dir + '/static/', "about.txt")
+
+@app.route('/trista', methods=['GET', 'POST'])
+def display_trista_page():
+    
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "trista_form.html")
 
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
     app.run(debug=True,port=5001)
+
+ 
