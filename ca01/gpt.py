@@ -17,6 +17,7 @@ On Windows:
 % $env:APIKEY="....." # in powershell
 % python gpt.py
 '''
+from mistune import markdown
 import openai
 
 
@@ -44,6 +45,33 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    # Trista's demo
+    def tristaDemo(self, birthday):
+        full_prompt = f"What happened on the month and day of {birthday} in history, response the event only happend before 2020? "
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=full_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+        response = completion.choices[0].text
+        return response
+    def trista_catImage(self):
+        full_prompt = f"Send me just a photo of a cute cat, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). Your response will only contain the image, do not mention Unsplash in your response, do not contain any '.' "
+        catPhoto = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=full_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+        #get the markdown
+        markdown_text = catPhoto.choices[0].text
+        response = markdown(markdown_text)
+        return response
     
     
 
@@ -53,3 +81,4 @@ if __name__=='__main__':
     import os
     g = GPT(os.environ.get("APIKEY"))
     print(g.getResponse("what does openai's GPT stand for?"))
+    

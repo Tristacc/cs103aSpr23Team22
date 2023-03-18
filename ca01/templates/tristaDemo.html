@@ -1,0 +1,59 @@
+<head>
+    <title>Trista's GPT Demo</title>
+    <style>
+        body {
+            background-color: rgb(244, 187, 156);
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(19, 19, 27);
+        }
+
+        p {
+            color: rgb(19, 19, 27);
+        }
+
+        /* .title,
+        .catImage {
+            text-align: center;
+        } */
+        .catImage {
+
+            margin-left: 150px;
+            margin-right: 150px;
+            object-fit: contain;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .answer_container {
+            background-color: bisque;
+            margin-left: 70px;
+            margin-right: 70px;
+            border-radius: 8px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>On your birthday in the history..</h1>
+
+    </div>
+    <div class="answer_container">
+        {{answer}}
+    </div>
+    <div class="catImage">
+        {% if catPhoto_html %}
+        <p>Also, here is a cute cat picture that ChatGPT wants to give you as a gift</p>
+        {{ catPhoto_html | safe}}
+        {% else %}
+        <p>[[Loading...]]</p>
+        {% endif %}
+    </div>
+
+</body>

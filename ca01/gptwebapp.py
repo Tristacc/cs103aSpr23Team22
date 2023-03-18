@@ -55,7 +55,14 @@ def display_about_page():
 # set up from each member
 @app.route('/trista', methods=['GET', 'POST'])
 def display_trista_page():
-    
+    if request.method == 'POST':
+        prompt = request.form['birthday']
+        answer = gptAPI.tristaDemo(prompt)
+        #write in the html code
+        catPhoto_html= gptAPI.trista_catImage()
+        
+        return render_template('tristaDemo.html', prompt = prompt, answer = answer,catPhoto_html = catPhoto_html)
+    else:
         root_dir = app.root_path
         return send_from_directory(root_dir + '/static/', "trista_form.html")
 
