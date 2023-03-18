@@ -45,6 +45,7 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    
     # Trista's demo
     def tristaDemo(self, birthday):
         full_prompt = f"What happened on the month and day of {birthday} in history, response the event only happend before 2020? "
@@ -73,7 +74,19 @@ class GPT():
         response = markdown(markdown_text)
         return response
     
-    
+    #Ran's demo
+    def ranDemo(self, birthday, birthtime, birthlocation):
+        full_prompt = f"Do a detailed BaZi fortun telling for a person born on {birthday} {birthtime} at {birthlocation}. "
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=full_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+        response = completion.choices[0].text
+        return response
 
 if __name__=='__main__':
     '''

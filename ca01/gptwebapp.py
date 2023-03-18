@@ -65,6 +65,20 @@ def display_trista_page():
     else:
         root_dir = app.root_path
         return send_from_directory(root_dir + '/static/', "trista_form.html")
+    
+#Ran's part
+@app.route('/ran', methods=['GET', 'POST'])
+def display_ran_page():
+    if request.method == 'POST':
+        birthday = request.form['birthday']
+        birthtime= request.form['birthtime']
+        location= request.form['birthlocation']
+        answer = gptAPI.ranDemo(birthday, birthtime, location)
+
+        return render_template('ranDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "ran_form.html")
 
 
 if __name__=='__main__':
