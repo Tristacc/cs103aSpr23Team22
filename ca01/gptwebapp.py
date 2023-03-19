@@ -91,7 +91,15 @@ def display_kaiyu_page():
         root_dir = app.root_path
         return send_from_directory(root_dir + '/static/', "kaiyu_form.html")
 
-
+@app.route('/chenchuhui', methods=['GET', 'POST'])
+def display_chenchuhui_page():
+    if request.method == 'POST':
+        answer = gptAPI.chenchuhuiDemo()
+        return render_template('chenchuhuiDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "chenchuhui_form.html")
+    
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
     app.run(debug=True,port=5001)
