@@ -87,6 +87,20 @@ class GPT():
         )
         response = completion.choices[0].text
         return response
+    
+    #Kaiyu's Demo
+    def kaiyuDemo(self, birthday):
+        full_prompt = f"Please provide a horoscope analysis of me. My birthday is {birthday}."
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=full_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+        response = completion.choices[0].text
+        return response
 
 if __name__=='__main__':
     '''

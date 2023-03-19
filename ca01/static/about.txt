@@ -1,6 +1,8 @@
-This GPT-based application gives you some interesting information about your birtyday
+This GPT-based application gives you some interesting information about your birthday
 
 In Trista's link, user can enter their birthday check a history event that happend on user's birthday
 
 In Ran's link, user can do forturne telling based on Chinese BaZi chart by entering their birth information.
 Bazi chart is based on sexagenary cycle, which is the most common method of furtune telling for Chinese culture, 
+
+In Kaiyu's link, user can get a horoscope analysis based on their birthday, basically focusing on their personalities and fortune.

@@ -79,6 +79,17 @@ def display_ran_page():
     else:
         root_dir = app.root_path
         return send_from_directory(root_dir + '/static/', "ran_form.html")
+    
+@app.route('/kaiyu', methods=['GET', 'POST'])
+def display_kaiyu_page():
+    if request.method == 'POST':
+        birthday = request.form['birthday']
+        answer = gptAPI.kaiyuDemo(birthday)
+        
+        return render_template('kaiyuDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "kaiyu_form.html")
 
 
 if __name__=='__main__':
