@@ -101,6 +101,19 @@ class GPT():
         )
         response = completion.choices[0].text
         return response
+    
+    def chenchuhuiDemo(self):
+        full_prompt = f"Generate a fortune"
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=full_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+        response = completion.choices[0].text
+        return response
 
 if __name__=='__main__':
     '''
