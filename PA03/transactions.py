@@ -6,6 +6,7 @@ def toDict(t):
     return transaction
 
 class Transaction():
+    #---------------------------------methods from Trista -----------------------------------
     def __init__(self):
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
                     (item_num int, amount int, category text, date int, description text)''',())
@@ -18,6 +19,7 @@ class Transaction():
     
     def delete(self, item):
         return self.runQuery("DELETE FROM transactions WHERE item_num=(?)",(item['item_num'],))
+    #-----------------------------end of methods from Trista -----------------------------------
     
     def runQuery(self,query,tuple):
         con= sqlite3.connect(os.getenv('HOME')+'/Desktop/cs103aSpr23Team22/PA03/tracker.db')

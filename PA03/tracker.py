@@ -8,7 +8,7 @@ def usage():
             tracker add [item#] [amount] [category] [date] [description]
             tracker show 
             tracker delete [item#]
-            
+            menu
             '''
             )
 def showTable(items):
@@ -16,7 +16,6 @@ def showTable(items):
         print('no tasks to print')
         return
     print('\n')
-    
     print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
     print('-'*70)
     for item in items:
@@ -24,14 +23,13 @@ def showTable(items):
         print("%-10d %-10d %-10s %04s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
 
 def process_args(arglist):
-    ''' examine args and make appropriate calls to TodoList'''
+    
+    #---------------------------------methods from Trista -----------------------------------
     tracker = Transaction()
     if arglist==[] or arglist==["menu"]:
         usage()
-
     elif arglist[0]=="show":
         showTable(tracker.showTransactions())
-
     elif arglist[0]=='add':
         if len(arglist)!=6:
             print(len(arglist))
@@ -40,7 +38,6 @@ def process_args(arglist):
         else:
             userInput = {'item_num':arglist[1],'amount':arglist[2],'category':arglist[3], 'date':arglist[4],'description':arglist[5]}
             tracker.add(userInput)
-
     elif arglist[0] =='delete':
         if len(arglist)!=2:
             print("please enter the item#")
@@ -48,7 +45,7 @@ def process_args(arglist):
         else:
             userInput = {'item_num':arglist[1]}
             tracker.delete(userInput)
-
+    #-----------------------------end of methods from Trista -----------------------------------
     
 
 def toplevel():
