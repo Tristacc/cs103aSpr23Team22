@@ -65,10 +65,41 @@ def display_trista_page():
     else:
         root_dir = app.root_path
         return send_from_directory(root_dir + '/static/', "trista_form.html")
+    
+#Ran's part
+@app.route('/ran', methods=['GET', 'POST'])
+def display_ran_page():
+    if request.method == 'POST':
+        birthday = request.form['birthday']
+        birthtime= request.form['birthtime']
+        location= request.form['birthlocation']
+        answer = gptAPI.ranDemo(birthday, birthtime, location)
 
+        return render_template('ranDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "ran_form.html")
+    
+@app.route('/kaiyu', methods=['GET', 'POST'])
+def display_kaiyu_page():
+    if request.method == 'POST':
+        birthday = request.form['birthday']
+        answer = gptAPI.kaiyuDemo(birthday)
+        
+        return render_template('kaiyuDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "kaiyu_form.html")
 
-
-
+@app.route('/chenchuhui', methods=['GET', 'POST'])
+def display_chenchuhui_page():
+    if request.method == 'POST':
+        answer = gptAPI.chenchuhuiDemo()
+        return render_template('chenchuhuiDemo.html', answer = answer)
+    else:
+        root_dir = app.root_path
+        return send_from_directory(root_dir + '/static/', "chenchuhui_form.html")
+    
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
     app.run(debug=True,port=5001)

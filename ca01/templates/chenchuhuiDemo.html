@@ -1,0 +1,48 @@
+<!-- This Demo takes in user's birthday and generate a history event that happend on user's birthday -->
+
+<head>
+    <title>Chenchuhui's GPT Demo</title>
+    <style>
+        body {
+            background-color: rgb(244, 187, 156);
+            text-align: center;
+        }
+        
+        h1 {
+            color: rgb(19, 19, 27);
+        }
+        
+        p {
+            color: rgb(19, 19, 27);
+        }
+        
+        img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .answer_container {
+            background-color: bisque;
+            margin-left: 70px;
+            margin-right: 70px;
+            border-radius: 8px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Get your fotune</h1>
+
+    </div>
+    <div class="answer_container">
+        {{answer}}
+    </div>
+
+    <div>
+        <a href="/chenchuhui">Try again!</a><br>
+        <a href="/index">return</a>
+    </div>
+
+</body>
