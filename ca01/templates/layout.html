@@ -1,2 +1,14 @@
 <!doctype html>
-<img src="{{ url_for('static', filename='BrandeisLogo.png') }}" alt="Example Image">{% block body %}{% endblock %}
+<style>
+    body {
+        margin-left: 8%;
+    }
+    p {
+        font-family:'Courier New', Courier, monospace;
+        font-size: 18px;
+    }
+    a {
+        font-size: 18px;
+    }
+</style>
+<img src="{{ url_for('static', filename='BrandeisLogo.png') }}" alt="Brandeis Logo" width="125px" height="125px">{% block body %}{% endblock %}
