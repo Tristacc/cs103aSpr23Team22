@@ -29,7 +29,7 @@ def process_args(arglist):
     if arglist==[] or arglist==["menu"]:
         usage()
     elif arglist[0]=="show":
-        showTable(tracker.showTransactions())
+        showTable(tracker.show_transactions())
     elif arglist[0]=='add':
         if len(arglist)!=6:
             print(len(arglist))
