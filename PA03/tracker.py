@@ -8,9 +8,12 @@ def usage():
             tracker add [item#] [amount] [category] [date] [description]
             tracker show 
             tracker delete [item#]
-            menu
+            tracker summarize-by-date
+            tracker summatize-by-month 
             '''
             )
+    
+#---------------------------------methods from Trista -----------------------------------
 def showTable(items):
     if len(items)==0:
         print('no tasks to print')
@@ -21,6 +24,23 @@ def showTable(items):
     for item in items:
         values = tuple(item.values()) 
         print("%-10d %-10d %-10s %04s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
+#-----------------------------end of methods from Trista -----------------------------------
+
+#---------------------------------methods from Kaiyu--------------------------------------
+def showDate(items, str):
+    if len(items)==0:
+        print('no tasks to print')
+        return
+    print('\n')
+    if str == "date":
+        print("%-10s %-10s %-10s %-10s %-10s"%('date','item#','amount','category','description'))
+    elif str == "month":
+        print("%-10s %-10s %-10s %-10s %-10s"%('month','item#','amount','category','description'))
+    print('-'*70)
+    for item in items:
+        values = tuple(item.values()) 
+        print("%-10s %-10s %-10s %10s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
+#-----------------------------end of methods from Kaiyu------------------------------------
 
 def process_args(arglist):
     
@@ -47,6 +67,12 @@ def process_args(arglist):
             tracker.delete(userInput)
     #-----------------------------end of methods from Trista -----------------------------------
     
+    #---------------------------------methods from Kaiyu----------------------------------------
+    elif arglist[0] == "summarize-by-date":
+            showDate(tracker.summarize_by_date(),'date')
+    elif arglist[0] == "summarize-by-month":
+            showDate(tracker.summarize_by_month(),'month')
+    #-----------------------------end of methods from Kaiyu------------------------------------
 
 def toplevel():
     if len(sys.argv)==1:
