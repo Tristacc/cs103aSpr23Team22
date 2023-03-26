@@ -9,7 +9,7 @@ sample_item = {
     'item_num': 1,
     'amount': 50,
     'category': 'Groceries',
-    'date': '0205',
+    'date': '2023-02-05',
     'description': 'Bread and milk'
 }
 
@@ -43,3 +43,65 @@ def test_delete():
     count =  num_data()
     assert count == 0
 #----------------------------end of test from Trista -----------------------------------
+
+#---------------------------------test from Kaiyu---------------------------------------
+
+sample_item1 = {
+    'item_num': 1,
+    'amount': 50,
+    'category': 'Groceries',
+    'date': '2023-02-05',
+    'description': 'Bread and milk'
+}
+sample_item2 = {
+    'item_num': 2,
+    'amount': 30,
+    'category': 'Vegetables',
+    'date': '2023-02-05',
+    'description': 'Tomatoes'
+}
+sample_item3 = {
+    'item_num': 2,
+    'amount': 20,
+    'category': 'Vegetables',
+    'date': '2023-02-05',
+    'description': 'Tomatoes'
+}
+sample_item4 = {
+    'item_num': 1,
+    'amount': 50,
+    'category': 'Groceries',
+    'date': '2023-02-25',
+    'description': 'Bread and milk'
+}
+sample_item5 = {
+    'item_num': 3,
+    'amount': 1,
+    'category': 'Electronic',
+    'date': '2023-03-03',
+    'description': 'Earphones'
+}
+
+def test_summarize_by_date():
+    clearTable()
+    transaction.add(sample_item1)
+    transaction.add(sample_item2)
+    transaction.add(sample_item3)
+    transaction.add(sample_item4)
+    transaction.add(sample_item5)
+    count = len(transaction.summarize_by_date())
+    assert count == 4
+    clearTable()
+
+def test_summarize_by_month():
+    clearTable()
+    transaction.add(sample_item1)
+    transaction.add(sample_item2)
+    transaction.add(sample_item3)
+    transaction.add(sample_item4)
+    transaction.add(sample_item5)
+    count = len(transaction.summarize_by_month())
+    assert count == 3
+    clearTable()
+
+#----------------------------end of test from Kaiyu-------------------------------------
