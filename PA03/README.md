@@ -20,3 +20,21 @@ test_transaction.py .. [100%]
    My part in transactions.py : Your code has been rated at 3.64/10(previous run: 0.45/10, +3.18)
 
 ------------------end of Trista's result--------------------
+
+---------------------Kaiyu's result-------------------------
+
+1. pytest report
+   ============================= test session starts ==================================
+   platform darwin -- Python 3.8.10, pytest-6.2.3, py-1.10.0, pluggy-0.13.1
+   rootdir: /Users/pkydemac/Desktop/cs103aSpr23Team22/PA03
+   plugins: anyio-2.2.0  
+   collected 4 items
+   test_transaction.py ....[100%]
+
+================================= 4 passed in 0.03s ====================================
+
+2. pylint report
+   tracker.py: Your code has been rated at 6.21/10
+   transactions.py: Your code has been rated at 2.41/10
+
+------------------end of Kaiyu's result---------------------
