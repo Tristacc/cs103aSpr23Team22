@@ -16,7 +16,7 @@ def usage():
 #---------------------------------methods from Trista -----------------------------------
 def showTable(items):
     if len(items)==0:
-        print('no tasks to print')
+        print('no transactions to print')
         return
     print('\n')
     print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
@@ -29,7 +29,7 @@ def showTable(items):
 #---------------------------------methods from Kaiyu--------------------------------------
 def showDate(items, str):
     if len(items)==0:
-        print('no tasks to print')
+        print('no transactions to print')
         return
     print('\n')
     if str == "date":
