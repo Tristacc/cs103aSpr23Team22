@@ -38,3 +38,22 @@ test_transaction.py .. [100%]
    transactions.py: Your code has been rated at 2.41/10
 
 ------------------end of Kaiyu's result---------------------
+
+---------------------Chenchuhui's result-------------------------
+
+1. pytest report
+=========================================== test session starts ========================================================
+platform win32 -- Python 3.11.0, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\帅逼胡陈\Documents\Brandeis Spring23\COSI 103A Fundamentals of Software Engineering\cs103aSpr23Team22\PA03
+plugins: anyio-3.6.2
+collected 6 items
+
+test_transaction.py ......                                                                                                                                 [100%]
+
+============================================= 6 passed in 0.45s ======================================================
+
+2. pylint report
+   tracker.py: Your code has been rated at 6.81/10 (previous run: 6.81/10, +0.00)
+   transactions.py: Your code has been rated at 4.86/10 (previous run: 4.86/10, +0.00)
+
+------------------end of Chenchuhui's result---------------------
