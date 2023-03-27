@@ -4,7 +4,7 @@ import sqlite3
 import os
 
 def toDict(t,str):
-    if str == "": 
+    if str == "":
         transaction = {
         'rowid':t[0], 
         'item_num':t[1], 
@@ -66,7 +66,7 @@ class Transaction():
     #-----------------------------end of methods from Chenchuhui------------------------------------
     def runQuery(self,query,tuple,str):
         con= sqlite3.connect(os.getcwd()+'/tracker.db')
-        cur = con.cursor() 
+        cur = con.cursor()
         cur.execute(query,tuple)
         tuples = cur.fetchall()
         con.commit()
