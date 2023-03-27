@@ -22,13 +22,19 @@ def toDict(t,str):
         'category':t[4],
         'description':t[5]
         }
+    elif str == "category":
+        transaction = {
+        'rowid':t[0], 
+        'amount':t[1],
+        'category':t[2],
+        }
     return transaction
 
 class Transaction():
     #---------------------------------methods from Trista -----------------------------------
     def __init__(self):
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
-                    (item_num int, amount int, category text, date data, description text)''',(),"")
+                    (item_num int, amount int, category text, date int, description text)''',(),"")
     def add(self, item):
         '''add the itemds to table'''
         return self.runQuery("INSERT INTO transactions VALUES(?,?,?,?,?)",(item['item_num'],item['amount'],item['category'],item['date'],item['description']),"")
@@ -49,8 +55,18 @@ class Transaction():
         return self.runQuery("SELECT rowid, STRFTIME('%Y-%m', date) as month, item_num, SUM(amount), category, description FROM transactions GROUP BY month, item_num ORDER BY month ASC",(),"date")
     #-----------------------------end of methods from Kaiyu------------------------------------
 
+    #---------------------------------methods from Chenchuhui----------------------------------------
+    def summarize_by_year(self):
+        print(self.runQuery("SELECT rowid, STRFTIME('%Y', date) as year, item_num, SUM(amount), category, description FROM transactions GROUP BY year, item_num ORDER BY year ASC",(),"date"))
+        return self.runQuery("SELECT rowid, STRFTIME('%Y', date) as year, item_num, SUM(amount), category, description FROM transactions GROUP BY year, item_num ORDER BY year ASC",(),"date")
+
+    def summarize_by_category(self):
+        return self.runQuery("SELECT rowid, SUM(amount), category FROM transactions GROUP BY category ORDER BY category ASC",(),"category")
+
+
+    #-----------------------------end of methods from Chenchuhui------------------------------------
     def runQuery(self,query,tuple,str):
-        con= sqlite3.connect(os.getenv('HOME')+'/Desktop/cs103aSpr23Team22/PA03/tracker.db')
+        con= sqlite3.connect(os.getcwd()+'/tracker.db')
         cur = con.cursor() 
         cur.execute(query,tuple)
         tuples = cur.fetchall()
