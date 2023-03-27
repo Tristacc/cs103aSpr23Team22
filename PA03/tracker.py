@@ -9,33 +9,38 @@ def usage():
             tracker show 
             tracker delete [item#]
             tracker summarize-by-date
-            tracker summatize-by-month 
+            tracker summarize-by-month 
+            tracker summarize-by-year 
+            tracker summarize-by-category 
             '''
             )
     
 #---------------------------------methods from Trista -----------------------------------
-def showTable(items):
+def showTable(items, category: bool):
     if len(items)==0:
-        print('no transactions to print')
+        print('no tasks to print')
         return
     print('\n')
-    print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
+    if (category):
+         print("%-10s %-10s"%('amount','category'))
+    else:
+         print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
     print('-'*70)
     for item in items:
         values = tuple(item.values()) 
-        print("%-10d %-10d %-10s %04s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
+        if (category):
+             print("%-10d %-10s"% ( values[1], values[2]))
+        else:
+            print("%-10d %-10d %-10s %04s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
 #-----------------------------end of methods from Trista -----------------------------------
 
 #---------------------------------methods from Kaiyu--------------------------------------
 def showDate(items, str):
     if len(items)==0:
-        print('no transactions to print')
+        print('no tasks to print')
         return
     print('\n')
-    if str == "date":
-        print("%-10s %-10s %-10s %-10s %-10s"%('date','item#','amount','category','description'))
-    elif str == "month":
-        print("%-10s %-10s %-10s %-10s %-10s"%('month','item#','amount','category','description'))
+    print("%-10s %-10s %-10s %-10s %-10s"%(str,'item#','amount','category','description'))
     print('-'*70)
     for item in items:
         values = tuple(item.values()) 
@@ -49,7 +54,7 @@ def process_args(arglist):
     if arglist==[] or arglist==["menu"]:
         usage()
     elif arglist[0]=="show":
-        showTable(tracker.show_transactions())
+        showTable(tracker.show_transactions(), False)
     elif arglist[0]=='add':
         if len(arglist)!=6:
             print(len(arglist))
@@ -74,6 +79,14 @@ def process_args(arglist):
             showDate(tracker.summarize_by_month(),'month')
     #-----------------------------end of methods from Kaiyu------------------------------------
 
+
+    #---------------------------------methods from Chenchuhui----------------------------------------
+    elif arglist[0] == "summarize-by-year":
+            showDate(tracker.summarize_by_year(),'year')
+    elif arglist[0] == "summarize-by-category":
+            showTable(tracker.summarize_by_category(), True)
+    #-----------------------------end of methods from Chenchuhui------------------------------------ 
+
 def toplevel():
     if len(sys.argv)==1:
         usage()
@@ -90,5 +103,6 @@ def toplevel():
         args = sys.argv[1:]
         process_args(args)
         print('-'*70+'\n')
-    
-toplevel()
+
+if __name__ == "__main__":
+     toplevel()
