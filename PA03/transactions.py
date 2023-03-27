@@ -34,7 +34,7 @@ class Transaction():
     #---------------------------------methods from Trista -----------------------------------
     def __init__(self):
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
-                    (item_num int, amount int, category text, date int, description text)''',(),"")
+                    (item_num int, amount int, category text, date date, description text)''',(),"")
     def add(self, item):
         '''add the itemds to table'''
         return self.runQuery("INSERT INTO transactions VALUES(?,?,?,?,?)",(item['item_num'],item['amount'],item['category'],item['date'],item['description']),"")
