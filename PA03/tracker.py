@@ -99,6 +99,10 @@ def toplevel():
                 args = ['add',args[1],args[2],args[3],args[4]," ".join(args[5:])]
             if args[0]=='delete':
                 args = ['delete',args[1]]
+            #--------------------quit method from Ran---------------------
+            if args[0]=='quit':
+                return
+            #--------------------end of quit method from Ran---------------------
             process_args(args)
             print('-'*70+'\n')
     else:
