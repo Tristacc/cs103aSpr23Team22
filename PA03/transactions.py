@@ -57,7 +57,6 @@ class Transaction():
 
     #---------------------------------methods from Chenchuhui----------------------------------------
     def summarize_by_year(self):
-        print(self.runQuery("SELECT rowid, STRFTIME('%Y', date) as year, item_num, SUM(amount), category, description FROM transactions GROUP BY year, item_num ORDER BY year ASC",(),"date"))
         return self.runQuery("SELECT rowid, STRFTIME('%Y', date) as year, item_num, SUM(amount), category, description FROM transactions GROUP BY year, item_num ORDER BY year ASC",(),"date")
 
     def summarize_by_category(self):
