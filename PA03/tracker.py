@@ -1,4 +1,3 @@
-
 from transactions import Transaction
 import sys
 
@@ -14,24 +13,25 @@ def usage():
             tracker summarize-by-category 
             '''
             )
-    
+
 #---------------------------------methods from Trista -----------------------------------
 def showTable(items, category: bool):
     if len(items)==0:
         print('no tasks to print')
         return
     print('\n')
-    if (category):
-         print("%-10s %-10s"%('amount','category'))
+    if category:
+        print("%-10s %-10s"%('amount','category'))
     else:
-         print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
+        print("%-10s %-10s %-10s %-6s %-5s"%('item#','amount','category','date','description'))
     print('-'*70)
     for item in items:
-        values = tuple(item.values()) 
-        if (category):
-             print("%-10d %-10s"% ( values[1], values[2]))
+        values = tuple(item.values())
+        if category:
+            print("%-10d %-10s"% ( values[1], values[2]))
         else:
-            print("%-10d %-10d %-10s %04s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
+            print("%-10d %-10d %-10s %04s %10s"
+                  % ( values[1], values[2], values[3], values[4],"  "+values[5]))
 #-----------------------------end of methods from Trista -----------------------------------
 
 #---------------------------------methods from Kaiyu--------------------------------------
@@ -43,12 +43,12 @@ def showDate(items, str):
     print("%-10s %-10s %-10s %-10s %-10s"%(str,'item#','amount','category','description'))
     print('-'*70)
     for item in items:
-        values = tuple(item.values()) 
-        print("%-10s %-10s %-10s %10s %10s"% ( values[1], values[2], values[3], values[4],"  "+values[5]))
+        values = tuple(item.values())
+        print("%-10s %-10s %-10s %10s %10s"
+              % ( values[1], values[2], values[3], values[4],"  "+values[5]))
 #-----------------------------end of methods from Kaiyu------------------------------------
 
 def process_args(arglist):
-    
     #---------------------------------methods from Trista -----------------------------------
     tracker = Transaction()
     if arglist==[] or arglist==["menu"]:
@@ -61,7 +61,9 @@ def process_args(arglist):
             print("more information needed")
             usage()
         else:
-            userInput = {'item_num':arglist[1],'amount':arglist[2],'category':arglist[3], 'date':arglist[4],'description':arglist[5]}
+            userInput = {'item_num':arglist[1],'amount':arglist[2],
+                         'category':arglist[3], 'date':arglist[4],
+                         'description':arglist[5]}
             tracker.add(userInput)
     elif arglist[0] =='delete':
         if len(arglist)!=2:
@@ -74,18 +76,18 @@ def process_args(arglist):
     
     #---------------------------------methods from Kaiyu----------------------------------------
     elif arglist[0] == "summarize-by-date":
-            showDate(tracker.summarize_by_date(),'date')
+        showDate(tracker.summarize_by_date(),'date')
     elif arglist[0] == "summarize-by-month":
-            showDate(tracker.summarize_by_month(),'month')
+        showDate(tracker.summarize_by_month(),'month')
     #-----------------------------end of methods from Kaiyu------------------------------------
 
 
     #---------------------------------methods from Chenchuhui----------------------------------------
     elif arglist[0] == "summarize-by-year":
-            showDate(tracker.summarize_by_year(),'year')
+        showDate(tracker.summarize_by_year(),'year')
     elif arglist[0] == "summarize-by-category":
-            showTable(tracker.summarize_by_category(), True)
-    #-----------------------------end of methods from Chenchuhui------------------------------------ 
+        showTable(tracker.summarize_by_category(), True)
+    #-----------------------------end of methods from Chenchuhui--------------------------------------
 
 def toplevel():
     if len(sys.argv)==1:
@@ -105,4 +107,4 @@ def toplevel():
         print('-'*70+'\n')
 
 if __name__ == "__main__":
-     toplevel()
+    toplevel()
