@@ -57,3 +57,22 @@ test_transaction.py ......                                                      
    transactions.py: Your code has been rated at 4.86/10 (previous run: 4.86/10, +0.00)
 
 ------------------end of Chenchuhui's result---------------------
+
+
+----------------------------Ran's result------------------------------
+
+1. pytest report
+===================================================== test session starts =====================================================
+platform darwin -- Python 3.11.2, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/ranwei/Desktop/Class/SoftwareEngineering/cs103aSpr23Team22/PA03
+plugins: anyio-3.6.2
+collected 7 items                                                                                                                                     
+
+test_transaction.py .......                                                                                                                     [100%]
+
+======================================================= 7 passed in 0.14s ======================================================
+2. pylint report
+   tracker.py: Your code has been rated at 6.79/10
+   transactions.py: Your code has been rated at 4.59/10
+
+-----------------------------------end of Ran's result-----------------------------------

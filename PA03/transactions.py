@@ -62,8 +62,13 @@ class Transaction():
     def summarize_by_category(self):
         return self.runQuery("SELECT rowid, SUM(amount), category FROM transactions GROUP BY category ORDER BY category ASC",(),"category")
 
-
     #-----------------------------end of methods from Chenchuhui------------------------------------
+
+    #-----------------------------methods from Ran--------------------------------
+    def select_by_amount_range(self, low, high):
+        return self.runQuery("SELECT rowid, * FROM transactions WHERE amount BETWEEN (?) AND (?)",(low, high),"")
+    #-----------------------------end of methods from Ran------------------------
+
     def runQuery(self,query,tuple,str):
         con= sqlite3.connect(os.getcwd()+'/tracker.db')
         cur = con.cursor()

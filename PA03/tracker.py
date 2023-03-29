@@ -89,6 +89,15 @@ def process_args(arglist):
         showTable(tracker.summarize_by_category(), True)
     #-----------------------------end of methods from Chenchuhui--------------------------------------
 
+    #--------------------method from Ran---------------------
+    elif arglist[0] == "select-by-amount-range":
+        if len(arglist)!=3:
+            print("please enter the lower and upper bound for amount")
+        else:
+            showTable(tracker.select_by_amount_range(arglist[1],arglist[2]), False)
+    #--------------------end of method from Ran---------------------
+        
+
 def toplevel():
     if len(sys.argv)==1:
         usage()

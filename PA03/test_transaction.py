@@ -167,3 +167,46 @@ def test_summarize_by_category(transaction, item_list):
     clearTable()
 
 #---------------------------- end of test from Chenchuhui -------------------------------------
+
+#---------------------------- test from Ran -------------------------------------
+def test_select_by_amount_range(transaction):
+    clearTable()
+    item_list = [{
+        'item_num': 1,
+        'amount': 2,
+        'category': 'Groceries',
+        'date': '2023-09-26',
+        'description': 'Bread'
+    },{
+        'item_num': 2,
+        'amount': 6,
+        'category': 'Groceries',
+        'date': '2023-10-03',
+        'description': 'banana'
+    },{
+        'item_num': 3,
+        'amount': 8,
+        'category': 'Produce',
+        'date': '2023-10-03',
+        'description': 'apple'
+    },{
+        'item_num': 4,
+        'amount': 12,
+        'category': 'Bathroom',
+        'date': '2023-12-05',
+        'description': 'toielt paper'
+    },{
+        'item_num': 5,
+        'amount': 7,
+        'category': 'Female Hygiene',
+        'date': '2023-10-03',
+        'description': 'tampon'
+    }]
+    for i in item_list:
+        transaction.add(i)
+    expected_output = transaction.select_by_amount_range(5,10)
+    assert len(expected_output) == 3
+    assert expected_output[0]['item_num'] == 2
+    assert expected_output[1]['item_num'] == 3
+    assert expected_output[2]['item_num'] == 5
+    clearTable()
