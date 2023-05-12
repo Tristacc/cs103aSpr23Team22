@@ -99,6 +99,20 @@ item#      amount     category   date   description
 3          5          Pet        2020-04-15    Dogfood
 4          10         Pet        2021-05-12    Catfood
 5          5          Sadfood    2020-04-12     Burger
+----------------------------------------------------------------------
+
+tracker> add 1 20 Grocery 2023-05-11 Milk
+----------------------------------------------------------------------
+
+tracker> show
+
+
+item#      amount     category   date   description
+----------------------------------------------------------------------
+2          15         Grocery    2023-04-11      Bread
+3          5          Pet        2020-04-15    Dogfood
+4          10         Pet        2021-05-12    Catfood
+5          5          Sadfood    2020-04-12     Burger
 1          20         Grocery    2023-05-11       Milk
 ----------------------------------------------------------------------
 
@@ -148,6 +162,18 @@ amount     category
 5          Sadfood
 ----------------------------------------------------------------------
 
+tracker> show    
+
+
+item#      amount     category   date   description
+----------------------------------------------------------------------
+2          15         Grocery    2023-04-11      Bread
+3          5          Pet        2020-04-15    Dogfood
+4          10         Pet        2021-05-12    Catfood
+5          5          Sadfood    2020-04-12     Burger
+1          20         Grocery    2023-05-11       Milk
+----------------------------------------------------------------------
+
 tracker> delete 1
 ----------------------------------------------------------------------
 
@@ -162,4 +188,4 @@ item#      amount     category   date   description
 5          5          Sadfood    2020-04-12     Burger
 ----------------------------------------------------------------------
 
-tracker> quit  
+tracker> quit
