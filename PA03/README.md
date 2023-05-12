@@ -76,3 +76,90 @@ test_transaction.py .......                                                     
    transactions.py: Your code has been rated at 4.59/10
 
 -----------------------------------end of Ran's result-----------------------------------
+
+
+---------------------------------- run tracker.py ----------------------------------------
+running tracker.py
+$ python tracker.py 
+usage:
+            tracker add [item#] [amount] [category] [date] [description]
+            tracker show
+            tracker delete [item#]
+            tracker summarize-by-date
+            tracker summarize-by-month
+            tracker summarize-by-year
+            tracker summarize-by-category
+
+tracker> show
+
+
+item#      amount     category   date   description
+----------------------------------------------------------------------
+2          15         Grocery    2023-04-11      Bread
+3          5          Pet        2020-04-15    Dogfood
+4          10         Pet        2021-05-12    Catfood
+5          5          Sadfood    2020-04-12     Burger
+1          20         Grocery    2023-05-11       Milk
+----------------------------------------------------------------------
+
+tracker> summarize-by-date
+
+
+date       item#      amount     category   description
+----------------------------------------------------------------------
+2020-04-12 5          5             Sadfood     Burger
+2020-04-15 3          5                 Pet    Dogfood
+2021-05-12 4          10                Pet    Catfood
+2023-04-11 2          15            Grocery      Bread
+2023-05-11 1          20            Grocery       Milk
+----------------------------------------------------------------------
+
+tracker> summarize-by-month
+
+
+month      item#      amount     category   description
+----------------------------------------------------------------------
+2020-04    3          5                 Pet    Dogfood
+2020-04    5          5             Sadfood     Burger
+2021-05    4          10                Pet    Catfood
+2023-04    2          15            Grocery      Bread
+2023-05    1          20            Grocery       Milk
+----------------------------------------------------------------------
+
+tracker> summarize-by-year
+
+
+year       item#      amount     category   description
+----------------------------------------------------------------------
+2020       3          5                 Pet    Dogfood
+2020       5          5             Sadfood     Burger
+2021       4          10                Pet    Catfood
+2023       1          20            Grocery       Milk
+2023       2          15            Grocery      Bread
+----------------------------------------------------------------------
+
+tracker> summarize-by-category
+
+
+amount     category
+----------------------------------------------------------------------
+35         Grocery
+15         Pet
+5          Sadfood
+----------------------------------------------------------------------
+
+tracker> delete 1
+----------------------------------------------------------------------
+
+tracker> show
+
+
+item#      amount     category   date   description
+----------------------------------------------------------------------
+2          15         Grocery    2023-04-11      Bread
+3          5          Pet        2020-04-15    Dogfood
+4          10         Pet        2021-05-12    Catfood
+5          5          Sadfood    2020-04-12     Burger
+----------------------------------------------------------------------
+
+tracker> quit  
