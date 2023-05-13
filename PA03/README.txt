@@ -189,3 +189,35 @@ item#      amount     category   date   description
 ----------------------------------------------------------------------
 
 tracker> quit
+-------------------------------------------------------------
+ranwei@Rans-MacBook-Air PA03 % python3 tracker.py  
+usage:
+            tracker add [item#] [amount] [category] [date] [description]
+            tracker show 
+            tracker delete [item#]
+            tracker summarize-by-date
+            tracker summarize-by-month 
+            tracker summarize-by-year 
+            tracker summarize-by-category 
+            
+tracker> show
+no transactions to print
+----------------------------------------------------------------------
+
+tracker> add 1 2 Groceries 2023-09-26 Bread
+----------------------------------------------------------------------
+
+tracker> add 2 6 Groceries 2023-10-03 Banana                                   
+----------------------------------------------------------------------
+
+tracker> add 3 5 Produce 2023-10-04 Apple
+----------------------------------------------------------------------
+
+tracker> select-by-amount-range 3 7
+
+
+item#      amount     category   date   description
+----------------------------------------------------------------------
+2          6          Groceries  2023-10-03     Banana
+3          5          Produce    2023-10-04      Apple
+----------------------------------------------------------------------
